@@ -7,8 +7,97 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Registration</h1>
+    <input type="text" id="name">
+    <input  type="number" id="age">
+    <input type="text" id="qualification">
+  <input type="number" id="score">
+    <label style="color: red;" id="lab"></label>
+    <h1 id="san"></h1>
+<button onclick="list()">Add</button>
+<h1 id="h"></h1>
+<table id="cate">
+<tr>
+<th>Name</th>
+<th>Age</th>
+<th>Qalification</th>
+<th>Score</th>
+</tr>
 
 
+</table>
+
+
+<script>
+let fox=document.getElementById("h");
+let lion=document.getElementById("lab");
+
+
+studList=[];
+function list(){
+   
+    lion.innerText="";
+    var name=document.getElementById("name").value;
+
+    var age=document.getElementById("age").value;
+    var qualification=document.getElementById("qualification").value;
+    var score =document.getElementById("score").value;
+   
+
+if(name == ''){
+    lion.innerText="pleas"
+    return;
+}
+if(age == ''){
+    lion.innerText="pleas age"
+    return;
+}
+if(qualification == ''){
+    lion.innerText="pleas type qualification"
+    return;
+}
+if(score == ''){
+    lion.innerText="pleas enter score"
+    return;
+}
+newList ={
+    name: name,
+    age: age,
+    qual: qualification,
+    score: Number(score)
+};
+studList.push(newList)
+
+tiger = document.getElementById("cate");
+rowCount = tiger.rows.length;
+newRow= tiger.insertRow(rowCount);
+nameCell=newRow.insertCell(0);
+nameCell.innerHTML=name;
+ageCell=newRow.insertCell(1);
+ageCell.innerHTML=age;
+qualCell=newRow.insertCell(2);
+qualCell.innerHTML=qualification;
+scoreCell=newRow.insertCell(3);
+scoreCell.innerHTML=score;
+
+  document.getElementById("name").value="";
+  document.getElementById("age").value="";
+  document.getElementById("qualification").value="";
+  document.getElementById("score").value="";
+
+  document.getElementById("name").focus();
+  totalScore = 0;
+  for(index=0; index<studList.length; index++){
+      current=studList[index];
+      totalScore = totalScore + current.score;
+      avrg= totalScore/studList.length;
+      document.getElementById("san").innerHTML=avrg;
+  }
+  
+  
+}
+
+console.log(avrg)
+
+</script>
 </body>
 </html>
